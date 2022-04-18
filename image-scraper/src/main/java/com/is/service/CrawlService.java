@@ -8,6 +8,7 @@ import java.util.Map;
 import java.util.concurrent.atomic.AtomicInteger;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 import org.springframework.util.CollectionUtils;
 
 import com.google.gson.Gson;
@@ -22,6 +23,7 @@ import serpapi.SerpApiSearchException;
  * @author vishwa
  *
  */
+@Service
 public class CrawlService {
 
 	// TODO - These can be moved to configurations either at start-up time or as
@@ -72,7 +74,9 @@ public class CrawlService {
 					if (CollectionUtils.isEmpty(response.getImages_results())) {
 						response.getImages_results().stream().forEach(image -> {
 							WebResource r = new WebResource();
-							r.setUrl(image.getThumbnail());
+							r.setUrl(image.getOriginal());
+							r.setDescription(image.getSource());
+							r.setThumbnail(image.getThumbnail());
 							records.add(r);
 						});
 					} else {

@@ -1,12 +1,9 @@
 package com.is.core;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.context.event.ApplicationReadyEvent;
 import org.springframework.context.event.EventListener;
-
-import com.is.service.CrawlService;
 
 /**
  * MainAppClass - Made it as Web/REST compatible so that we can use it in a web
@@ -18,9 +15,6 @@ import com.is.service.CrawlService;
  */
 @SpringBootApplication
 public class Main {
-
-	@Autowired
-	private CrawlService crawlService;
 
 	public static void main(String[] args) {
 

@@ -1,5 +1,8 @@
 package com.its.pojo;
 
+/**
+ * As per serpapi docs
+ */
 import java.util.List;
 
 public class SerpResponse {

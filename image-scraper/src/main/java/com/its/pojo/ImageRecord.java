@@ -1,5 +1,10 @@
 package com.its.pojo;
 
+/**
+ * 
+ * @author vishwa
+ *
+ */
 public class ImageRecord {
 	
 	private String thumbnail;

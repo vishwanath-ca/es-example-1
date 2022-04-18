@@ -16,6 +16,8 @@ public class WebResource {
 	private String url;
 	private String[] tags;
 	private String description;
+	private String domain;
+	private String thumbnail;
 	
 	// Further we can include, type - image/text/file, validity - resource is still reachable or not, date - last validated date, domain - primary domain name etc.,
 	
@@ -42,6 +44,18 @@ public class WebResource {
 	}
 	public void setTags(String[] tags) {
 		this.tags = tags;
+	}
+	public String getDomain() {
+		return domain;
+	}
+	public void setDomain(String domain) {
+		this.domain = domain;
+	}
+	public String getThumbnail() {
+		return thumbnail;
+	}
+	public void setThumbnail(String thumbnail) {
+		this.thumbnail = thumbnail;
 	}
 
 }
