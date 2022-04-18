@@ -32,7 +32,7 @@ public class Main {
 	// memory pressure.
 	@EventListener(ApplicationReadyEvent.class)
 	private void init() throws Exception {
-		crawlService.dumpDummyData();
+		// crawlService.dumpDummyData();
 	}
 
 }
