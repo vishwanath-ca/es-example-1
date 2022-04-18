@@ -17,15 +17,19 @@ repositories {
     // You can declare any Maven/Ivy/file repository here.
     jcenter()
     mavenCentral()
+    // for serpapi
+    maven {
+		url 'https://jitpack.io'
+	}
 }
 
 dependencies {
-    // This dependency is exported to consumers, that is to say found on their compile classpath.
-    
     implementation 'org.springframework.data:spring-data-elasticsearch:4.3.3'
     implementation 'org.springframework.boot:spring-boot-starter-web:2.6.6'
-    implementation("org.apache.httpcomponents:httpclient")
-
+    implementation 'org.apache.httpcomponents:httpclient'
+	implementation 'com.github.serpapi:google-search-results-java:2.0.0'
+	implementation 'com.google.code.gson:gson'
+	
     // This dependency is used internally, and not exposed to consumers on their own compile classpath.
     implementation 'com.google.guava:guava:28.0-jre'
 

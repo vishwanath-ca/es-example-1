@@ -8,7 +8,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.is.service.CrawlService;
-import com.is.service.ISService;
 
 /**
  * 
@@ -19,10 +18,10 @@ import com.is.service.ISService;
 public class CrawlController {
 
 	private UUID secret;
-	
+
 	@Autowired
 	private CrawlService crawlService;
-	
+
 	// TODO - provider, later ex: Google, Yahoo etc.,
 	@GetMapping(path = "crawl/prepare")
 	public String prepare() {
@@ -37,10 +36,11 @@ public class CrawlController {
 	 */
 	@GetMapping(path = "crawl/init")
 	public String init(@RequestParam(value = "key") String key,
-			@RequestParam(value = "provider", required = false) String provider) {
+			@RequestParam(value = "provider", required = false) String provider) throws Exception {
 		if (secret != null && secret.toString().equals(key)) {
+			crawlService.dumpDummyData();
 			return "Alright, process is starting now.";
-			
+
 		} else {
 			return "Nice try! But Sorry!!!";
 		}

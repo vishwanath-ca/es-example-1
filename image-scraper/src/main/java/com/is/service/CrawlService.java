@@ -2,7 +2,9 @@ package com.is.service;
 
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.concurrent.atomic.AtomicInteger;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -31,6 +33,16 @@ public class CrawlService {
 	 * TODO 1. Handle abort cases 2. Support multiple providers like Google, Yahoo.
 	 */
 	public void startCrawling(String provider) throws Exception {
+		
+		// Always trigger for the first time and continue as long as we get records. Abort otherwise.
+		boolean hasMoreResults = true;
+
+		Map<String, String> parameter = new HashMap<>();
+		parameter.put("api_key", "918aa4f9d5d4a9a2028ef00523b38c60b1ab4fcdb2f38d1b24d2a6a186a15ecd"); // TODO - Make it configurable later.
+		parameter.put("tbm", "isch"); //  To get only images.
+		while(hasMoreResults) {
+			
+		}
 
 	}
 
