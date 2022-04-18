@@ -36,9 +36,9 @@ public class CrawlController {
 	 */
 	@GetMapping(path = "crawl/init")
 	public String init(@RequestParam(value = "key") String key,
-			@RequestParam(value = "provider", required = false) String provider) throws Exception {
+			@RequestParam(value = "provider", required = false) String provider, @RequestParam(value = "maxPages", defaultValue = "3") Integer maxPages) throws Exception {
 		if (secret != null && secret.toString().equals(key)) {
-			crawlService.dumpDummyData();
+			crawlService.startCrawling(provider, maxPages);
 			return "Alright, process is starting now.";
 
 		} else {
