@@ -71,7 +71,7 @@ public class CrawlService {
 				GoogleSearch search = new GoogleSearch(parameter);
 				response = new Gson().fromJson(search.getJson(), SerpResponse.class);
 				if (response != null) {
-					if (CollectionUtils.isEmpty(response.getImages_results())) {
+					if (!CollectionUtils.isEmpty(response.getImages_results())) {
 						response.getImages_results().stream().forEach(image -> {
 							WebResource r = new WebResource();
 							r.setUrl(image.getOriginal());
