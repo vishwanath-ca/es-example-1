@@ -15,6 +15,10 @@ import com.is.domain.WebResource;
 import com.is.service.ISService;
 
 /**
+ * MainAppClass - Made it as Web/REST compatible so that we can use it in a web application if needed.
+ * TODO
+ * 1. Security - Authentication/Authorization as per needs.
+ * 2. Customization as needed.
  * 
  * @author vishwa
  *
@@ -24,12 +28,18 @@ public class Main {
 
 	@Autowired
 	private ISService service;
+	
+	// TODO - These can be moved to configurations either at start-up time or as dynamic configurations as needed.
+	private static int TOTAL_NUMBER_OF_RECORDS_TO_INDEX = 1000000;
+	private static int BATCH_SIZE = 1000;
 
 	public static void main(String[] args) {
 
 		SpringApplication.run(Main.class, args);
 	}
 
+	
+	// TODO - Need to implement throttle checks for TOTAL_NUMBER_OF_RECORDS_TO_INDEX, BATCH_SIZE - handle extreme cases to avoid memory pressure.
 	@EventListener(ApplicationReadyEvent.class)
 	private void init() {
 		// Sample to index a single record
@@ -42,11 +52,11 @@ public class Main {
 		List<WebResource> records = new ArrayList<WebResource>();
 		int batchNumber = batchCounter.incrementAndGet();
 		
-		for (int i = 0; i < 1000000; i++) {
+		for (int i = 0; i < TOTAL_NUMBER_OF_RECORDS_TO_INDEX; i++) {
 			WebResource r = new WebResource();
 			r.setUrl("www.url-here-" + i + ".com");
 			records.add(r);
-			if (records.size() >= 100) {
+			if (records.size() >= BATCH_SIZE) {
 				System.out.println(batchNumber + "| send: " + new Date());
 				service.bulkCreateAsync(records, batchNumber);
 				

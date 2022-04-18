@@ -35,6 +35,10 @@ public class ISService {
 	private RestHighLevelClient client;
 
 	
+	public long getDocCounters() {
+		return resourceRepo.count();
+	}
+	
 	//Spring asynchronous processing
 	@Async
 	public void bulkCreateAsync(List<WebResource> records, int batchNumber) {
